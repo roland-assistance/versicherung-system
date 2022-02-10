@@ -20,11 +20,14 @@ public class VertragService {
     }
     
     public VertragDtoStatusEnum getVertragStatus(String vertragsnummer) {
+        if(vertragsnummer == null || vertragsnummer.trim().equals("")){
+            throw new IllegalArgumentException(vertragsnummer);
+        }
         ZahlungStatusEnum zahlungStatus = this.vertragstatusService.getZahlungStatus(vertragsnummer);
-        boolean vertragNeu = this.vertragstatusService.isNeuVertrag(vertragsnummer);
         if(zahlungStatus == ZahlungStatusEnum.ABGESCHLOSSEN){
             return VertragDtoStatusEnum.GUELTIG;
         }
+        boolean vertragNeu = this.vertragstatusService.isNeuVertrag(vertragsnummer);
         if ((zahlungStatus == ZahlungStatusEnum.ERWARTET && vertragNeu) ||
         (zahlungStatus == ZahlungStatusEnum.NICHT_VOLLSTAENDIG && !vertragNeu)) {
             return VertragDtoStatusEnum.GUELTIG_ABER_DECKUNG_NICHT_VOLLSTAENDIG;
