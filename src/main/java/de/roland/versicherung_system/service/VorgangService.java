@@ -1,7 +1,6 @@
 package de.roland.versicherung_system.service;
 
 import de.roland.versicherung_system.DTOs.VorgangDto;
-import de.roland.versicherung_system.persistance.entity.VorgangEntity;
 import de.roland.versicherung_system.persistance.repository.VorgangRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,7 +9,6 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @Transactional(readOnly = true)
@@ -20,8 +18,8 @@ public class VorgangService {
     private VorgangRepository vorgangRepository;
 
     public List<VorgangDto> getAllVorgaengeStatic(){
-        VorgangDto vorgangDTo = new VorgangDto(1l, new Date(), "PKW", "rot");
-        VorgangDto vorgangDTo1 = new VorgangDto(2l, new Date(), "LKW", "blau");
+        VorgangDto vorgangDTo = new VorgangDto(1L, new Date(), "PKW", "rot");
+        VorgangDto vorgangDTo1 = new VorgangDto(2L, new Date(), "LKW", "blau");
         List<VorgangDto> vorgangDTos = new ArrayList<>();
         vorgangDTos.add(vorgangDTo);
         vorgangDTos.add(vorgangDTo1);
