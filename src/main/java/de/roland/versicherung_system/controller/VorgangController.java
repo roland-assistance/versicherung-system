@@ -1,7 +1,7 @@
 package de.roland.versicherung_system.controller;
 
 import de.roland.versicherung_system.DTOs.VorgangDto;
-import de.roland.versicherung_system.service.VorgangService;
+import de.roland.versicherung_system.service.VorgangServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,9 +15,9 @@ import java.util.List;
 public class VorgangController {
     
     @Autowired
-    private VorgangService vorgangService;
+    private VorgangServiceImpl vorgangService;
     
-    public static final String PATH_BASE = "/vorgang";
+    public static final String PATH_BASE = "/vorgaenge";
     
     @GetMapping(path = "/pkws", produces = MediaType.APPLICATION_JSON_VALUE)
     public List<VorgangDto> getAllePKWVorgaenge() {
